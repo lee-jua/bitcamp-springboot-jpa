@@ -12,11 +12,9 @@ public class AdminServiceImpl implements AdminService{
 @Autowired AdminDao adminDao;
 	@Override
 	public void register(Admin admin) {
-	
 		admin.setEmployNumber(createEmployNumber());
 		admin.setPasswd("1");
 		admin.setRegisterDate(createCurrentDate());
-		System.out.println(admin.toString());
 		adminDao.insert(admin);
 	}
 
