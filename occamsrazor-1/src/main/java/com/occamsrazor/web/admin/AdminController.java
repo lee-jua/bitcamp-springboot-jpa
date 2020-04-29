@@ -1,38 +1,45 @@
 package com.occamsrazor.web.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.occamsrazor.web.util.Messenger;
 
-@RestController //url 처리하는 컨트롤러
-@RequestMapping("/member") //요청하는 url
+@RestController
+@RequestMapping("/admins")
 public class AdminController {
-	@Autowired AdminService memberService; //spring container의 autowired가 bean을 자동으로 주입한다 
-	
-		@PostMapping("/join")
-		public Messenger add(@RequestBody Admin member) { //controller는 무조건 응답(return)이 있어야 한다
-			int current = memberService.count();
-			memberService.add(member);
-			return (memberService.count()==current+1)?Messenger.SUCCESS:Messenger.FAIL; //return타입은 객체로
-		}
+@Autowired AdminService adminService;
+	@PostMapping("")	
+	public Messenger post(@RequestBody Admin admin) {
+		adminService.register(admin);
+		return Messenger.SUCCESS;
+	}
+	@GetMapping("")
+	public List<Admin> list(){
+		return adminService.findAll();
+	}
 
-		@PostMapping("/login")
-		public Messenger login(@RequestBody Admin member) {
-			return memberService.login(member)?Messenger.SUCCESS:Messenger.FAIL;
-		}
-		
-
-		
-		@GetMapping("/count")
-		public int count() {
-			return memberService.count();
-		}
-		
-	
-
+	@GetMapping("/{employNumber}") //조회
+	public Admin detail(@PathVariable String employNumber) {
+		return adminService.findOne(employNumber);
+	}
+	@PutMapping("/{employNumber}")
+	public Messenger put(@RequestBody Admin admin) { //수정
+		adminService.modify(admin);
+	 return Messenger.SUCCESS;
+	}
+	@DeleteMapping("/{employNumber}")
+	public Messenger delete(@RequestBody Admin admin) { //삭제
+		adminService.remove(admin);
+		return Messenger.SUCCESS;
+	}
 }

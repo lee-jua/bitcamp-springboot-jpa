@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        min-height: 100%;
+    }
+    .border_black {
+        border: 1px solid black;
+    }
+    .center {
+        margin: 0 auto;
+        text-align: center;
+    }
+    .width_full {
+        width: '100%';
+        height: '100%'
+    }
+</style>
+ 
+<body>
+    <table id="kcdc">
+        <tr id="tr_1">
+            <td>
+                <img src="http://www.cdc.go.kr/cdc/img/main/h1_logo.png">
+            </td>
+            <td colspan="2">
+               <h2>관리자 등록</h2> 
+            </td>
+            <td>
+                <a id="join_a" style="cursor:pointer;text-decoration: underline">회원가입</a>
+                <a id="login_a" style="cursor:pointer;text-decoration: underline">로그인</a>
+                <a id="register_a" style="cursor:pointer;text-decoration: underline">관리자 등록</a>
+                <a id="access_a" style="cursor:pointer;text-decoration: underline">관리자 접속</a>
+                
+            </td>
+        </tr>
+        <tr id="menu">
+            <td colspan="4">
+            </td>
+        </tr>
+        <tr>
+            <td id="content" colspan="4">
+                <table id="admin" style="width: 80%; height:80%; margin: 0 auto">
+                <tr style="width: 80%;height: 50px;">
+                  <td rowspan="4">
+                    <img src="https://u5b8t9w6.stackpathcdn.com/wp-content/uploads/2014/12/profile-default-300x242.jpg">
+                  </td>
+                  <td style="height: 20%">
+                    <label>이름</label>
+                  </td>
+                  <td>
+                    <input id="name" type="text" />
+                  </td>
+                </tr>  
+                <tr style="height: 20%">
+                  <td >
+                    <label>직급</label>
+                  </td>
+                  <td>
+                    <input id="position" type="text" />
+                  </td>
+                </tr>
+                <tr style="height: 20%">
+                  <td>
+                    <label>이메일</label>
+                  </td>
+                  <td>
+                    <input id="email" type="text" />
+                  </td>
+                </tr>
+                <tr style="height: 20%">
+                  <td>
+                    <label>전화번호</label>
+                  </td>
+                  <td>
+                    <input id="phoneNumber" type="text" />
+                  </td>
+                </tr>
+                <tr style="height: 20%">
+                  <td colspan="3">
+                    <input id="admin_update" type="button" value="수정하기" style="width: 200px; height: 100px;font-size: 30px;"/>
+                    <input id="admin_cancel" type="button" value="취소하기" style="width: 200px; height: 100px;margin-left: 50px;font-size: 30px;"/>
+                  </td>
+                </tr>
+              </table>
+            </td>
+        </tr>
+    </table>
+ <script>
+ 	
+     $('#kcdc').css({ width: '80%', height: '900px' }).addClass('border_black center')
+     $('#tr_1').css({ width: '80%', height: '50px' }).addClass('border_black center')
+     $('#menu').css({ width: '80%', height: '50px' }).addClass('border_black center')
+     $('#kcdc td').addClass('border_black', 'width_full')
+     $('#register_a').css({color: 'skyblue', cursor : 'none', 'text-decoration': 'none'})
+     $('#admin_update').click(e=>{
+    	 e.preventDefault()
+    	 $.ajax({
+    		 url:'/admins/'+'1234',
+    		 type:'put',
+    		 data:JSON.stringify({
+    			 name : $('#name').val(),
+    			 position : $('#position').val(),
+    			 email : $('#email').val(),
+    			 phoneNumber : $('#phoneNumber').val()
+    		 }),
+    		 dataType:'json',
+    		 contentType:'application/json',
+    		 success:d=>{
+    			 if (d ==='SUCCESS') {
+					alert('성공')
+				}else{
+					alert('실패')
+				}
+    		 },
+    		 error:(r,x,e)=>{alert(r.status)}
+    	 })
+     })
+ </script>
+</body>
+ 
+</html>
