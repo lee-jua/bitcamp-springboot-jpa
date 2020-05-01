@@ -1,6 +1,8 @@
 package com.occamsrazor.web.admin;
 
 import java.util.List;
+import org.springframework.stereotype.Component;
+@Component
 public interface AdminService {
 	public void register(Admin admin);
 	public Admin findOne(String employNumber);

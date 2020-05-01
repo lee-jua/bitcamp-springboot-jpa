@@ -41,10 +41,10 @@
                 <input id="search" type="text">        <input id="search-button" type="button" value="검색"> <br>
             </td>
             <td>
-                <input id="login-button" type="button" value="로그인">
-                <input id="join-button" type="button" value="회원가입">
-                <input id="access-button" type="button" value="관리자 접속">
-                <input id="register-button" type="button" value="관리자 등록">
+                <a id="login_a" style="cursor:pointer;text-decoration: underline">로그인</a>
+                <a id="join_a" style="cursor:pointer;text-decoration: underline">회원가입</a>
+                <a id="access_a" style="cursor:pointer;text-decoration: underline">관리자 접속</a>
+                <a id="register_a" style="cursor:pointer;text-decoration: underline">관리자 등록</a>
             </td>
         </tr>
         <tr id="menu">
@@ -76,29 +76,17 @@
         </tr>
     </table>
 
-
-    
-            <ul>
-                <li><a id="join_a">관리자 등록</a></li>
-                <li><a id="login_a">관리자 접속</a></li>
-                <li><a id="signin_a">사용자 등록</a></li>
-                <li><a id="signup_a">사용자 접속</a></li>
-
-            </ul>
-        
-
-   
-
  
     <script>
         $('#kcdc').css({ width: '80%', height: '900px' }).addClass('border_black center')
         $('#tr_1').css({ width: '80%', height: '50px' }).addClass('border_black center')
         $('#menu').css({ width: '80%', height: '50px' }).addClass('border_black center')
         $('#kcdc td').addClass('border_black', 'width_full')
-		$('#register-button').click(e=>{
+		$('#register_a').click(e=>{
 			e.preventDefault()
 			location.href="admin/register.html"
 		})
+		
     </script>
 </body>
 
