@@ -30,7 +30,7 @@ public class AdminDaoImpl implements AdminDao {
 	public List<Admin> selectAll() {
 		try {
 			
-		} catch (Exception e) {
+		} catch (  Exception e) {
 			// TODO: handle exception
 		}
 		return null;
