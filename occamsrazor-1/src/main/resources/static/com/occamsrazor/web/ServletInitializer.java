@@ -1,4 +1,3 @@
-  
 package com.occamsrazor.web;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;

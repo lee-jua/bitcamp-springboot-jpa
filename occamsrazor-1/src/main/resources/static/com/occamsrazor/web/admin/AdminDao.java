@@ -3,7 +3,6 @@ package com.occamsrazor.web.admin;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
-
 @Component
 public interface AdminDao {
 
@@ -13,7 +12,7 @@ public interface AdminDao {
 
 	public Admin selectOne(String employNumber);
 
-	public void update(Admin admin);
+	public void update(Admin admin) ;
 
 	public void delete(Admin admin);
 

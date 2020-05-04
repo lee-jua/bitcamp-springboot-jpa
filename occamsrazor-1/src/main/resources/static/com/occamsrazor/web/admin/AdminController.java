@@ -18,28 +18,28 @@ import com.occamsrazor.web.util.Messenger;
 @RequestMapping("/admins")
 public class AdminController {
 @Autowired AdminService adminService;
+	@PostMapping("")	
+	public Messenger post(@RequestBody Admin admin) {
+		adminService.register(admin);
+		return Messenger.SUCCESS;
+	}
+	@GetMapping("")
+	public List<Admin> list(){
+		return adminService.findAll();
+	}
 
-@PostMapping("")
-public Messenger post(@RequestBody Admin admin) {
-	adminService.register(admin);
-	return Messenger.SUCCESS;
-}
-@GetMapping("")
-public List<Admin> list(){
-	return adminService.findAll();
-}
-@GetMapping("/{employNumber}")
-public Admin detail(@PathVariable String employNumber) {
-	return adminService.findOne(employNumber);
-}
-@PutMapping("/{employNumber}")
-public Messenger update(@RequestBody Admin admin) {
-	adminService.modify(admin);
-	return Messenger.SUCCESS;
-}
-@DeleteMapping("/{employNumber}")
-public Messenger delete(@RequestBody Admin admin) {
-	adminService.remove(admin);
-	return Messenger.SUCCESS;
-}
+	@GetMapping("/{employNumber}") //조회
+	public Admin detail(@PathVariable String employNumber) {
+		return adminService.findOne(employNumber);
+	}
+	@PutMapping("/{employNumber}")
+	public Messenger put(@RequestBody Admin admin) { //수정
+		adminService.modify(admin);
+	 return Messenger.SUCCESS;
+	}
+	@DeleteMapping("/{employNumber}")
+	public Messenger delete(@RequestBody Admin admin) { //삭제
+		adminService.remove(admin);
+		return Messenger.SUCCESS;
+	}
 }

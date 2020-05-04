@@ -2,14 +2,11 @@ package com.occamsrazor.web.user;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public interface UserService {
 
 	public void register(User user);
 
-	public List<User> findAll();
+	public List<User> list();
 
 	public User findOne(String userid);
 

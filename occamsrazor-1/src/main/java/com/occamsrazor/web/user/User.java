@@ -5,11 +5,9 @@ import lombok.Setter;
 
 @Getter @Setter
 public class User {
-private String name,userid,passwd,ssn,addr,profile, registerDate,email,phoneNumber;
-
-@Override
-public String toString() {
-	return String.format("%s,%s,%s,%s,%s", userid,passwd,name,ssn,addr);
-}
-
+	private String  userid,passwd,name,ssn, addr, profile, email, phoneNumber, registerDate;
+	  @Override
+	public String toString() {
+		return String.format("%s,%s,%s,%s,%s,%s,%s,%s", userid,passwd,name,ssn, addr, profile, email, phoneNumber, registerDate);
+	}
 }
