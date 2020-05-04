@@ -24,7 +24,10 @@ public Messenger post(@RequestBody Admin admin) {
 	adminService.register(admin);
 	return Messenger.SUCCESS;
 }
-
+@PostMapping("/login")
+public Messenger login(@RequestBody Admin admin) {
+	return adminService.login(admin) ? Messenger.SUCCESS: Messenger.FAIL;
+}
 @GetMapping("")
 public List<Admin> list(){
 	return adminService.findAll();

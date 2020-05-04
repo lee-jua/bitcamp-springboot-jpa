@@ -58,7 +58,20 @@ user = (()=> {
       			          .appendTo('#login_box')
       			         .click(e=>{
       			    	       e.preventDefault()
-      			    	     location.href = "admin"
+      			    	     $.ajax({
+      			    	    	 url:'/admins/login',
+      			    	    	 type:'post',
+      			    	    	 data:JSON.stringify({
+      			    	    		 employNumber : $('#employNumber').val(),
+      			    	    		 passwd : $('#passwd').val()
+      			    	    	 }),
+      			    	    	 dataType:'json',
+      			    	    	 contentType:'application/json',
+      			    	    	 success:d=>{
+      			    	    		 location.href = "admin"
+      			    	    	 },
+      			    	    	 error : (r,x,e)=>{alert(r.status)}
+      			    	     })
       			         	})
       			       $(`<input type="button"/>`)
       			       		.attr({value:'취소'})

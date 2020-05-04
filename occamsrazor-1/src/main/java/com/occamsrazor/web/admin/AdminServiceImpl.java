@@ -20,8 +20,7 @@ public void register(Admin admin) {
 
 @Override
 public boolean login(Admin admin) {
-
-	return false;
+	return true;
 } 
 
 @Override
