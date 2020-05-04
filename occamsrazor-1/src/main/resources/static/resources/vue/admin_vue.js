@@ -53,5 +53,16 @@ const adminVue ={
         </tr>
     </table>	 `
 
+},
+
+
+login : ()=> {
+	return ` <form id="login_box">
+    <label>ID</label><br>
+    <input id= "userid" type="text"><br>
+    <label>PASSWORD</label><br>
+    <input id = "passwd" type="text"><br><br>
+
+    </form>`
 }
 }

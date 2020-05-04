@@ -15,8 +15,14 @@ public void register(Admin admin) {
 	admin.setPasswd("1");
 	admin.setRegisterDate("20200501");
 	adminDao.insert(admin);
-	
+
 }
+
+@Override
+public boolean login(Admin admin) {
+
+	return false;
+} 
 
 @Override
 public List<Admin> findAll() {
@@ -37,4 +43,6 @@ public void modify(Admin admin) {
 public void remove(Admin admin) {
 	adminDao.delete(admin);
 }
+
+
 }

@@ -24,6 +24,7 @@ public Messenger post(@RequestBody Admin admin) {
 	adminService.register(admin);
 	return Messenger.SUCCESS;
 }
+
 @GetMapping("")
 public List<Admin> list(){
 	return adminService.findAll();

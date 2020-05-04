@@ -11,29 +11,67 @@ user = (()=> {
 			$.when(//try-catch문
 					$.getScript(admin_vue) //admin뷰를 가져왔을 때
 			).done(()=>{//성공하면
-					setContentView() //그림을 먼저 그린다
-			  $('#register_a').click(e=>{
-			  $('#content').empty()
-			  $('#content').html(adminVue.join())
-			  $(  `<input type="button"/>` ) 
-			  		.attr({value : '등록하기'})
-			  		.css({width: '200px', height: '100px','font-size':'30px'})
-			  		.appendTo('#button_box')
-			  		.click(e=>{
-			  			alert('등록버튼 클릭')
-			  		})
-      		$(` <input type="button" />`)
-      				.attr({value:'취소하기'})
-      				.css({width: '200px', height: '100px','font-size': '30px'})
-      				.appendTo('#button_box')
-      				.click(e=>{
-      					alert('취소버튼 클릭')
-      				})
-			  	})
+				 setContentView() //그림을 먼저 그린다
+			     $('#register_a').click(e=>{ //register를 클릭하면
+			           $('#content').empty()
+			           $('#content').html(adminVue.join())
+			           $(  `<input type="button"/>` ) 
+			    	 	.attr({value : '등록하기'})
+			  	    	.css({width: '200px', height: '100px','font-size':'30px'})
+			  	    	.appendTo('#button_box')
+			  	    	.click(e=>{
+			  	    	   e.preventDefault()
+  			    	       $.ajax({
+  			    	    	   url : 'admins',
+  			    	    	   type : 'post',
+  			    	    	   data : JSON.stringify({
+  			    	    		 name : $('#name').val(),
+  			      			 position : $('#position').val(),
+  			      			 email : $('#email').val(),
+  			      			 phoneNumber : $('#phoneNumber').val()
+  			    	    	   }),
+  			    	    	   dataType : 'json',
+  			    	    	   contentType : 'application/json',
+  			    	    	   success : d=>{
+  			    	    		 if (d ==='SUCCESS') {
+  			   					alert('성공')
+  			    	    		 }else{
+  			   					alert('실패')
+  			   				}
+  			    	    	   },
+  			    	    	   error : (r,x,e) =>{alert(r.status)}
+  			    	       })
+			  	      	})
+      		          $(` <input type="button" />`)
+      		  		   .attr({value:'취소하기'})
+      				   .css({width: '200px', height: '100px','font-size': '30px'})
+      				   .appendTo('#button_box')
+      				   .click(e=>{
+      					  alert('취소버튼 클릭')
+      				    })
+			    })
+			  	$('#access_a').click(e=>{ //access를 클릭하면
+      			       $('#content').empty()
+      			       $('#content').html(adminVue.login())
+      			       $(`<input type="button"/>`)
+      			          .attr({value:'로그인'})
+      			          .appendTo('#login_box')
+      			         .click(e=>{
+      			    	       e.preventDefault()
+      			    	     location.href = "admin"
+      			         	})
+      			       $(`<input type="button"/>`)
+      			       		.attr({value:'취소'})
+      			       		.appenTo('#login_box')
+      			       		.click(e=>{
+      			    	   e.preventDefault()
+      			    	  
+      			       		})
+			  	         })
 			}).fail(()=>{ //실패하면
 				alert(WHEN_ERROR)
 			})   
-		 
+			
 			
 		} 
 		let setContentView = () =>{ //갖고와서 그림을 그린다??? ***속성***

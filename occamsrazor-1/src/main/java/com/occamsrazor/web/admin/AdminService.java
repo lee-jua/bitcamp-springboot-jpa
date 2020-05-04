@@ -17,4 +17,6 @@ public interface AdminService {
 
 	public void remove(Admin admin);
 
+	public boolean login(Admin admin);
+
 }
