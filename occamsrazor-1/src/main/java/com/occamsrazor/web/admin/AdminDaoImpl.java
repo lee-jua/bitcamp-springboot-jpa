@@ -20,7 +20,7 @@ public class AdminDaoImpl implements AdminDao{
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(
 					new FileWriter(
-					new File(Data.PATH.toString() + Data.ADMIN_LIST + Data.CSV), true));
+					new File(Data.ADMINS.toString()), true));
 			writer.write(admin.toString());
 			writer.newLine();
 			writer.flush();
@@ -37,7 +37,7 @@ public class AdminDaoImpl implements AdminDao{
 		String message = "";
 		try {
 			BufferedReader reader = new BufferedReader(
-					new FileReader(new File(Data.PATH.toString()+Data.ADMIN_LIST+Data.CSV)));
+					new FileReader(new File(Data.ADMINS.toString())));
 		while((message = reader.readLine()) !=null) {
 			list.add(message);
 		}
@@ -67,7 +67,7 @@ public class AdminDaoImpl implements AdminDao{
 		Admin admin = new Admin();
 			try {
 				BufferedReader reader = new BufferedReader(
-						new FileReader(new File(Data.PATH.toString()+Data.ADMIN_LIST+Data.CSV)));
+						new FileReader(new File(Data.ADMINS.toString())));
 			while((message = reader.readLine()) !=null) {
 				String arr[] = message.split(",");
 				if (arr[0].equals(employNumber)) {

@@ -5,9 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Repository;
-
 import com.occamsrazor.web.util.Data;
 import com.occamsrazor.web.util.Messenger;
 
@@ -20,7 +18,9 @@ public class ItemDaoImpl implements ItemDao{
 		List<Item> itemList = new ArrayList<>();
 		String message = "";
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(new File(Data.PATH.toString()+Data.ITEM_LIST+Data.CSV)));
+			BufferedReader reader = new BufferedReader(
+														new FileReader(
+														new File(Data.ITEMS.toString())));
 			while ((message = reader.readLine()) !=null) {
 				list.add(message);
 			}

@@ -22,7 +22,7 @@ public class UserDaompl implements UserDao{
 	public void insert(User user) {
 		try {
 			@SuppressWarnings("resource")
-			BufferedWriter writer = new BufferedWriter(new FileWriter(new File(Data.PATH.toString()+Data.USER_LIST+Data.CSV),true));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(new File(Data.USERS.toString()),true));
 			writer.write(user.toString());
 			writer.newLine();
 			writer.flush();
@@ -38,7 +38,7 @@ public class UserDaompl implements UserDao{
 		List<User> userlist = new ArrayList<User>();
 		List<String> list = new ArrayList<String>();
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(new File(Data.PATH.toString()+Data.USER_LIST+Data.CSV)));
+			BufferedReader reader = new BufferedReader(new FileReader(new File(Data.USERS.toString())));
 			while ((message = reader.readLine()) != null) {
 			 list.add(message);
 			}
@@ -70,7 +70,7 @@ public class UserDaompl implements UserDao{
 		User user= new User();
 			try {
 				BufferedReader reader = new BufferedReader(
-						new FileReader(new File(Data.PATH.toString()+Data.USER_LIST+Data.CSV)));
+						new FileReader(new File(Data.USERS.toString())));
 			while((message = reader.readLine()) !=null) {
 				String arr[] = message.split(",");
 				if (arr[0].equals(userid)) {
