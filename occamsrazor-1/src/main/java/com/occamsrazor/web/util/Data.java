@@ -3,7 +3,7 @@ package com.occamsrazor.web.util;
 import java.io.File;
 
 public enum Data {
-PATH, USER_LIST, CSV,ADMIN_LIST;
+PATH, USER_LIST, CSV,ADMIN_LIST,ITEM_LIST;
 	@Override
 	public String toString() {
 		String message = "";
@@ -16,6 +16,8 @@ PATH, USER_LIST, CSV,ADMIN_LIST;
 			message = "user_list";break;
 		case ADMIN_LIST:
 			message = "admin_list";break;
+		case ITEM_LIST:
+			message = "item_list"; break;
 		default:break;
 		}
 		return message;

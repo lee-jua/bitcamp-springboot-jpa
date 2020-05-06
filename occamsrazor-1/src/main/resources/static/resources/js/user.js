@@ -62,13 +62,18 @@ user = (()=> {
       			    	    	 url:'/admins/login',
       			    	    	 type:'post',
       			    	    	 data:JSON.stringify({
-      			    	    		 employNumber : $('#employNumber').val(),
+      			    	    		 employNumber : $('#userid').val(),
       			    	    		 passwd : $('#passwd').val()
       			    	    	 }),
       			    	    	 dataType:'json',
       			    	    	 contentType:'application/json',
       			    	    	 success:d=>{
-      			    	    		 location.href = "admin"
+      			    	    		location.href = "admin"
+//      			    	    		if (d === 'SUCCESS') {
+//										location.href = "admin"
+//									}else{
+//										alert('로그인 실패')
+//									}
       			    	    	 },
       			    	    	 error : (r,x,e)=>{alert(r.status)}
       			    	     })

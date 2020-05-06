@@ -11,16 +11,18 @@ public class AdminServiceImpl implements AdminService {
 
 @Override
 public void register(Admin admin) {
-	admin.setEmployNumber("1234");
-	admin.setPasswd("1");
-	admin.setRegisterDate("20200501");
+	
 	adminDao.insert(admin);
 
 }
 
 @Override
 public boolean login(Admin admin) {
-	return true;
+	boolean ok = false;
+	if (admin.getPasswd().equals(adminDao.selectOne(admin.getEmployNumber()).getPasswd())) {
+		ok = true;
+	}
+	return ok;
 } 
 
 @Override

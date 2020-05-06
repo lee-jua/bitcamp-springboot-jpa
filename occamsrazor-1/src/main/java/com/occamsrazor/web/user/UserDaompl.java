@@ -66,12 +66,31 @@ public class UserDaompl implements UserDao{
 
 	@Override
 	public User selectOne(String userid) {
-		try {
-			
+		String message = "";
+		User user= new User();
+			try {
+				BufferedReader reader = new BufferedReader(
+						new FileReader(new File(Data.PATH.toString()+Data.USER_LIST+Data.CSV)));
+			while((message = reader.readLine()) !=null) {
+				String arr[] = message.split(",");
+				if (arr[0].equals(userid)) {
+					user.setUserid(arr[0]);
+					user.setPasswd(arr[1]);
+					user.setName(arr[2]);
+					user.setSsn(arr[3]);
+					user.setAddr(arr[4]);
+					user.setProfile(arr[5]);
+					user.setEmail(arr[6]);
+					user.setPhoneNumber(arr[7]);
+					user.setRegisterDate(arr[8]);
+					break;
+				}
+			}
+			reader.close();
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(Messenger.FILE_SELECT_ERROR);
 		}
-		return null;
+		return user;
 	}
 
 	@Override
